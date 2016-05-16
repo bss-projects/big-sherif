@@ -1,0 +1,12 @@
+<form name="addacriticality" action="javascript:void(0);">
+<div id="criticalitynotice"></div>
+<div style="float: left; width: 10em; text-align: center"><label for="id">ID :</label></div><div><input type="text" name="id" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="label">Label :</label></div><div><input type="text" name="label" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="weight">Poids :</label></div><div><input type="text" name="weight" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="desc">Description :</label></div><div><input type="text" name="desc" /></div>
+</div><input type="hidden"  name="_id" value="" />
+<p>
+
+<input type="submit" value="Ajouter" onclick="addCriticality();">
+<input type="submit" value="Cancel" onclick="document.forms['addacriticality'].reset();$( '#addcriticalitydlg' ).dialog( 'close' );$('#criticalitynotice').removeClass('notice error');$('#criticalitynotice').html('');">
+</form>

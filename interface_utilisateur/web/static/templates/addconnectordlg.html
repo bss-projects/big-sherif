@@ -1,0 +1,20 @@
+<form name="addaconnector" action="javascript:void(0);">
+<div id="connectornotice"></div>
+<div style="float: left; width: 13em; text-align: center"><label for="nom">Nom :</label></div><div><input type="text" name="nom" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector">Type du connecteur :</label></div><div><input type="text" name="connector" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector_family">Famille :</label></div><div><input type="text" name="connector_family" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector_hostname">Hostname du superviseur :</label></div><div><input type="text" name="connector_hostname" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector_hostip">IP du superviseur :</label></div><div><input type="text" name="connector_hostip" /></div>
+<input type="hidden"  name="_id" value="" />
+<p>
+<input type="radio" name="connector_status" value="2">
+<label for="connector_status" class="inline"><i class="icon-thumbs-up icon-large" style="color: green" title="on"></i></label>
+<input type="radio" name="connector_status" value="0">
+<label for="connector_status" class="inline"><i class="icon-thumbs-down icon-large" style="color: red" title="off"></i></label>
+<p>
+<div id="ctranscode"></div>
+<p>
+<input type="submit" value="Ajouter un transcodage" onclick="document.forms['addatranscode']['connector'].value = document.forms['addaconnector']['connector'].value;$('#addtranscodedlg').dialog('open'); $('#connectornotice').removeClass('notice error');$('#connectornotice').html('');">
+<input type="submit" value="Ajouter" onclick="addConnector();">
+<input type="submit" value="Cancel" onclick="document.forms['addaconnector'].reset();$( '#addconnectordlg' ).dialog( 'close' );$('#connectornotice').removeClass('notice error');$('#connectornotice').html('');">
+</form>

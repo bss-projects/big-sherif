@@ -1,0 +1,15 @@
+<form name="addagroup" action="javascript:void(0);">
+<div id="groupnotice"></div>
+<div style="float: left; width: 8em; text-align: center"><label for="nom">Nom :</label></div><div><input type="text" name="nom" /></div>
+<div style="float: left; width: 8em; text-align: center"><label for="desc">Description :</label></div><div><input type="text" name="desc" /></div><input type="hidden"  name="_id" value="" />
+
+<ul class="button-bar" style="padding-top: 15px;padding-bottom: 15px">
+<li><a href="javascript:void(0);" id="viewrightbtn"><i class="icon-user-md" ></i>Droits</a></li>
+</ul>
+
+<div id="addgrouppoollist">
+</div>
+
+<input type="submit" value="Ajouter" onclick="addGroup();">
+<input type="submit" value="Cancel" onclick="document.forms['addagroup'].reset();$( '#addgroupdlg' ).dialog( 'close' );$('#groupnotice').removeClass('notice error');$('#groupnotice').html(''); document.forms['addagroup']['_id'].value = '';">
+</form>

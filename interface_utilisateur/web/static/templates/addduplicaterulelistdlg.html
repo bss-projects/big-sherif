@@ -1,0 +1,13 @@
+<form name="addaduplicaterulelist" action="javascript:void(0);">
+<div id="duplicaterulelistnotice"></div>
+<div style="float: left; width: 13em; text-align: center"><label for="component_src">Equipement source:</label></div><div><input type="text" name="component_src" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="address_src">Adresse IP source :</label></div><div><input type="text" name="address_src" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="component_dest">Equipement de destination :</label></div><div><input type="text" name="component_dest" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="address_dest">Adresse de destination :</label></div><div><input type="text" name="address_dest" /></div>
+<input type="hidden"  name="_id" value="" />
+
+<p>
+
+<input type="submit" value="Ajouter" onclick="addDuplicaterulelist();">
+<input type="submit" value="Cancel" onclick="document.forms['addaduplicaterulelist'].reset();$( '#addduplicaterulelistdlg' ).dialog( 'close' );$('#duplicaterulelistnotice').removeClass('notice error');$('#duplicaterulelistnotice').html('');">
+</form>

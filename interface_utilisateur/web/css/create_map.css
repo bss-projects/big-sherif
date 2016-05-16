@@ -1,0 +1,111 @@
+form {
+z-index:100;
+}
+
+
+.navbar {
+    padding:3px;
+    padding-top:20px;
+    margin: auto;
+    background: none repeat scroll 0 0 #000000;
+    color: #FFFFFF;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 46px;
+    z-index: 1000;
+}
+
+#map {
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+position:absolute;
+}
+
+
+
+#navbar div{
+  -moz-box-sizing: border-box;
+  background: -moz-linear-gradient(center top , #FCFCFC 0%, #E0E0E0 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  color: #666666;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: normal;
+  left: 0;
+  line-height: 100%;
+  margin: 0;
+  position: relative;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFFFFF;
+  top: 0;
+  vertical-align: bottom;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+#navbar i {
+
+  vertical-align: bottom;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding-top: 6px;
+}
+
+#navbar #newtext {
+    font: bold 225% Georgia, serif;
+    padding: 0px;
+}
+.endpoint {
+z-index: 25;
+opacity:0;
+}
+
+.endpoint:hover {
+z-index: 25;
+opacity:0.5;
+}
+._jsPlumb_overlay{
+z-index:2;
+}
+._jsPlumb_endpoint {
+z-index:2;
+}
+._jsPlumb_connector {
+z-index:1;
+}
+
+.text {
+z-index: 50;
+background-color: white;
+padding-left:5px;
+padding-right:5px;
+}
+
+.host{
+z-index: 50;
+background-color: white;
+padding: 5px;
+}
+.map{
+z-index: 50;
+background-color: white;
+padding: 5px;
+}
+.pool {
+z-index: 50;
+background-color: white;
+padding: 5px;
+}
+.picture {
+z-index: 0;
+}
+.picture img{
+z-index: 0;
+}

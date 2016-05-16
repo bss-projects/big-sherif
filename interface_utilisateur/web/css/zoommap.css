@@ -1,0 +1,25 @@
+#map { position: relative; width: auto; font-size: 10px; background-position:left top; background-repeat: no-repeat;}
+#mapline { display: block; position: absolute; top: 0; right: 0;  color: white; background: lightblue; padding: 3px; z-index:501;}
+
+#map a.bullet { display: block; position: absolute; width: 20px; height: 20px; text-decoration: none; opacity: .7; z-index: 10; }
+
+/* background: yellow; border: 1px solid red; */
+
+#map img.zoomable { }
+
+#map div.popup{ display: none; position: absolute; width: auto; top: 100px; left: 150px; background: white; z-index: 3000; padding: 10px; border: 2px solid black; }
+
+#map .inert-text {z-index: 500}
+
+#loadvnc {
+visibility: hidden;
+}
+
+.hostbullet {
+z-index:10;
+}
+
+.popup {
+width : 80%;
+}
+

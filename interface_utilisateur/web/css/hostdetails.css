@@ -1,0 +1,86 @@
+
+.stateMajor {
+    color: #E77EA8;
+}
+.stateMinor {
+    color: #EDC60E;
+}
+.stateUnknown {
+    color: grey;
+}
+.stateCritical {
+    color: #FE6659;
+}
+.stateWarning {
+    color: #FF6600;
+}
+.stateOK {
+    color: #6DC462;
+}
+
+div.headerHostActions {
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    width: 100%;
+}
+div.headerHostActions div.webos-container {
+    text-align: center;
+    display: table;
+    float: left;
+    height: 35px;
+    max-width: 50px;
+    min-width: 80px;
+    padding-top: 5px;
+}
+div.headerHostActions div.webos-container:hover {
+    color: #929292;
+    text-shadow: 0 0 5px #666666;
+}
+div.headerSystemActions {
+    background-color: #FFFFFF;
+    border-top: 1px solid #999999;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+div.headerSystemActions div.webos-container {
+    background-color: #FFFFFF;
+    display: table;
+    float: left;
+    height: 35px;
+    max-width: 50px;
+    min-width: 80px;
+    padding-top: 5px;
+}
+div.webos-container div.webos-container div.webos-label:hover {
+    color: #929292;
+    text-shadow: 0 0 5px #666666;
+}
+div.webos-labelfl{
+    float:left;
+    width:125px; 
+}
+
+.content{
+    background: url("usr/share/images/monitor/backContent.png") repeat-x scroll left top #F3F3F3;
+    width: 75%;
+    border-radius: 4px;
+    display:block;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.codetitle{
+     margin-left: 15px
+}
+
+.header {
+margin-top: 75px;
+}
+
+#date {
+margin: 0px auto;
+}

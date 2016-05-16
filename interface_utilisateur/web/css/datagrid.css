@@ -1,0 +1,30 @@
+
+
+
+
+table.dataTable td.center, table.dataTable td.dataTables_empty {
+    text-align: left;
+}
+
+
+
+td.stateackcol{
+text-align: center;
+}
+
+
+.dataTables_scrollHeadInner{
+    background: url("images/backWindowHeader.png") repeat-x scroll 0 0 transparent;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+.dataTables_filter{
+    background: url("images/backWindowHeader.png") repeat-x scroll 0 0 transparent;
+    border-top: 1px solid #000000;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+    text-align:right;
+}

@@ -1,0 +1,425 @@
+<div id="logo"></div>
+
+<div class="header">
+<div class="top">
+<div class="controllers">
+<span class="close">
+</span>
+<span class="hide">
+</span>
+<span class="maximize">
+</span>
+</div>
+<!--<div class="title">
+Event {{values._id}} Details</div>
+</div>-->
+<div class="header-specific">
+</div>
+</div>
+<div class="content">
+<div class="webos-container headerHost" id="webos-widget-140">
+<div class="webos-labelfl" style="height: 10em; padding: 20px;"><i class="icon-exclamation-sign icon-4x"></i></div>
+<div class="webos-labelfl">
+Host :</div><div class="webos-label">{{values.component}}</div>
+<div class="webos-labelfl">
+Fonctionnel :</div><div class="webos-label" id="systems"> <span id="systems_list">{{fonctionnelHelper values.pool}}</span> </div>
+<div class="webos-labelfl">
+IP :</div><div class="webos-label">{{values.address}}</div>
+<div class="webos-labelfl">
+Services :</div><div class="webos-label"> {{serviceHelper values.pool}}<div>
+<div class="webos-labelfl">
+Connecteurs :</div><div class="webos-label"> {{values.connector_name}}</div>
+<div class="webos-labelfl">
+P&eacute;rim&egrave;tre :</div><div class="webos-label"> {{perimetreHelper values.pool}}</div>
+<div class="webos-labelfl">
+Domaine :</div><div class="webos-label"> {{domaineHelper values.pool}}</div>
+
+
+<div class="webos-container headerHostActions" id="webos-widget-143" style="">
+<ul class="button-bar">
+<li><a href="javascript:void(0);" onclick="showEvent('ohmevent');"><i class="icon-home" ></i>Ohm</a></li>
+<li><a href="javascript:void(0);" onclick="showEvent('comment');"><i class="icon-comments-alt" ></i>Commentaires</a></li>
+<li><a href="#host/{{values.component}}" target="_blank"><i class="icon-hdd"></i>Fiche Serveur</a></li>
+<li><a href="javascript:void(0);" onclick="showEvent('ticket');"><i class="icon-edit"></i>Tickets</a></li>
+<!-- <li><a href="javascript:void(0);"><i class="icon-file-alt"></i>QRS</a></li> -->
+</ul>
+</div>
+</div>
+<div id="botcont" style="position : relative;">
+<div id="ohmevent" >
+<table>
+            <tr>
+                <th class="column_fiche">Etat</th>
+                <th class="column_fiche">Criticit&eacute;</th>
+                <th class="">Dernier check</th>
+                <th class="">Ressource</th>
+                <th class="">Commentaire</th>
+<!--                <th class="">QRS</th> -->
+            </tr>
+            	<tr class="odd">
+            	<td id="state_info" class="">{{values.state}}</td>
+            	<td class="">{{values.criticality}}</td>
+            	<td class="">{{values.timestamp_start}}</td>
+            	<td class="">{{values.resource}}</td>
+            	<td class="">{{values.output}}</td>
+<!--            	<td class=""></td> -->
+	    </tr>
+</table>
+<table style="margin-top: 30px">
+           <tr>
+                <th class="" width="50%">Attribut</th>
+                <th class="">Commentaire</th>
+           </tr>
+           <tr class="odd">
+            	<td class="">Emmetteur de l'alerte</td>
+            	<td class="">{{values.connector_name}}</td>
+	   </tr>
+           <tr class="even">
+            	<td class="">Type du superviseur</td>
+            	<td class="">{{values.connector}}</td>
+	   </tr>
+           <tr class="odd">
+            	<td class="">Nom d'hote du superviseur</td>
+            	<td class="">{{values.connector_hostname}}</td>
+	   </tr>
+           <tr class="even">
+            	<td class="">Criticit&eacute; annoncée par le superviseur</td>
+            	<td class="">{{values.criticality_input}}</td>
+	   </tr>
+           <tr class="odd">
+            	<td class="">Traduction de la criticit&eacute; annoncée</td>
+            	<td class="">{{values.criticality_input}}</td>
+	   </tr>
+           <tr class="even">
+            	<td class="">Criticit&eacute; réévaluée</td>
+            	<td class="">{{values.criticality}}</td>
+	   </tr>
+           <tr class="odd">
+            	<td class="">Dur&eacute;e de l'évènement</td>
+            	<td class="">{{values.duration}}</td>
+	   </tr>
+</table>
+</div>
+<div id="comment" style="visibility:hidden; position: absolute; left: 0px; top: 0px;">
+{{#each values.comments}}
+    <blockquote class="small">
+        <p> {{this.text}}
+            <span> Post&eacute; par {{this.first_name}} {{this.last_name}} ({{this.username}}), {{formatTimestamp this.timestamp}}</span>
+        </p>
+    </blockquote>
+{{/each}}
+<form id="acquitter_{{id}}" name="addacomment" action="" onsubmit="return false;" style="text-align: center">
+<label for="comment">Commentaire : </label><textarea name="comment" cols=100 rows=3 style="height: auto" /><br/>
+{{values.ack}}
+<input type="submit" value="Submit">
+</form>
+</div>
+<div id="ticket" style="visibility:hidden; float: none; visibility:hidden; position: absolute; left: 0px; top: 0px;" >
+    {{#if values.ticket}}
+        <div class="col_12">
+            <fieldset>
+                <legend><strong>Identifiant OSS :</strong> {{values.ticket_oss_id}}</legend>
+                <div class="col_6"><strong>Statut de la depeche :</strong> {{values.ticket_status}}
+                </div>
+                <div class="col_6">
+                    <strong>Date d'ouverture de la depeche :</strong> {{values.ticket_open_date}}<br>
+                    {{#if values.ticket_close_date}}
+                        <strong>Date de fermeture de la depeche :</strong> {{values.ticket_close_date}}
+                    {{/if}}
+                </div>
+        
+                <div class="col_12">
+                    <strong>Equipement :</strong> {{values.ticket_component}}
+                </div>
+                <div class="col_12">
+                    <blockquote class="small">
+                        <strong>Code cause :</strong> {{values.ticket_code_cause}}<br>
+                        <strong>Description : </strong>{{values.ticket_brief_description}}<br>
+                        <strong>Assignement :</strong> {{values.ticket_assignment}}
+                    </blockquote>
+                </div>
+
+                <div class="col_12">
+                {{#if values.ticket_resolution_comment}}
+                {{#if values.ticket_closing_comments}}
+                <div class="col_6">
+                {{else}}
+                <div class="col_12">
+                {{/if}}
+                    <blockquote class="small">
+                    <strong>Commentaire(s) de resolution :</strong> {{values.ticket_resolution_comment}}
+                    </blockquote>
+                </div>
+                {{/if}}
+                
+                {{#if values.ticket_closing_comments}}
+                {{#if values.ticket_resolution_comment}}
+                <div class="col_6">
+                {{else}}
+                <div class="col_12">
+                {{/if}}
+                    <blockquote class="small">
+                    <strong>Commentaire(s) de fermeture :</strong> {{values.ticket_closing_comments}}
+                    </blockquote>
+                </div>
+                {{/if}}
+                </div>
+
+                <div class="col_12">
+                {{#if values.ticket_action_comment}}
+                <div class="col_6">
+                    <blockquote class="small">
+                    <strong>Commentaire(s) de suivi d'action :</strong> {{values.ticket_action_comment}}
+                    </blockquote>
+                </div>
+                {{/if}}
+
+                {{#if values.ticket_update_action_comment}}
+                <div class="col_6">
+                    <blockquote class="small">
+                    <strong>Commentaire(s) de mise à jour :</strong> {{values.ticket_update_action_comment}}
+                    </blockquote>
+                </div>
+                {{/if}}
+                <div>
+
+                {{#if values.ticket_affected_comment}}
+                <div class="col_12">
+                    <blockquote class="small">
+                    <strong>Commentaire(s) d'affectation :</strong> {{values.ticket_affected_comment}}
+                    </blockquote>
+                </div>
+                {{/if}}
+        </fieldset>
+        </div>
+    {{else}}
+        <style type="text/css">
+    .form_del_margin {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .color-background {
+        background-color: #EEEEEE;
+    }
+</style>
+<div class="col_12 color-background">
+    <form id="ticket_form" action="javascript:void(0);">
+    <div class="col_12">
+        <label for="intitule_incident" class="col_2">Intilul&eacute; de l'incident :</label>
+        <input type="text" id="intitule_incident" name="intitule_incident" value="{{values.ticket_title}}" class="col_9" />
+    </div>
+    
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="type_action" class="col_4">Type d'action :</label>
+            <input type="text" id="type_action" name="type_action" value="DI" disabled="disabled" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="organisation_emettrice" class="col_4">Organisation &eacute;mettrice :</label>
+            <input type="text" id="organisation_emettrice" name="organisation_emettrice" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="nos_references" class="col_4">Nos r&eacute;f&eacute;rences :</label>
+            <input type="text" id="nos_references" name="nos_references" value="{{values.ticket_id}}" class="col_7" disabled="disabled"/>
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="vos_references" class="col_4">Vos r&eacute;f&eacute;rences :</label>
+            <input type="text" id="vos_references" name="vos_references" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="date_heure_action" class="col_4">Date et heure de l'action :</label>
+            <input type="text" id="date_heure_action" name="date_heure_action" value="{{values.ticket_declare_date}}" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="code_refpat" class="col_4">Code REFPAT :</label>
+            <input type="text" id="code_refpat" name="code_refpat" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="nom_inventeur" class="col_4">Nom de l'inventeur :</label>
+            <input type="text" id="nom_inventeur" name="nom_inventeur" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="nom_signaleur" class="col_4">Nom du signaleur :</label>
+            <input type="text" id="nom_signaleur" name="nom_signaleur" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="telephone_inventeur" class="col_4">T&eacute;l&eacute;phone de l'inventeur :</label>
+            <input type="text" id="telephone_inventeur" name="telephone_inventeur" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="telephone_signaleur" class="col_4">T&eacute;l&eacute;phone du signaleur :</label>
+            <input type="text" id="telephone_signaleur" name="telephone_signaleur" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="pk_debut" class="col_4">PK d&eacute;but :</label>
+            <input type="text" id="pk_debut" name="pk_debut" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="pk_fin" class="col_4">PK fin :</label>
+            <input type="text" id="pk_fin" name="pk_fin" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="libelle_lieu" class="col_4">Libell&eacute; du lieu :</label>
+            <input type="text" id="libelle_lieu" name="libelle_lieu" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="code_file" class="col_4">Code de file :</label>
+            <input type="text" id="code_file" name="code_file" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="description_equipement" class="col_4">Description &eacute;quipement :</label>
+            <input type="text" id="description_equipement" name="description_equipement" value="{{values.ticket_component}}" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="code_ees_sagai" class="col_4">Code EES SAGAI :</label>
+            <input type="text" id="code_ees_sagai" name="code_ees_sagai" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="num_ees_equipement" class="col_4">N&deg; EES &eacute;quipement :</label>
+            <input type="text" id="num_ees_equipement" name="num_ees_equipement" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="code_gmao" class="col_4">Code GMAO :</label>
+            <input type="text" id="code_gmao" name="code_gmao" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="description_anomalie" class="col_4">Description anomalie :</label>
+            <input type="text" id="description_anomalie" name="description_anomalie" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="code_anomalie" class="col_4">Code anomalie :</label>
+            <input type="text" id="code_anomalie" name="code_anomalie" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="situation_inacceptable" class="col_4">Situation inacceptable :</label>
+            <input type="text" id="situation_inacceptable" name="situation_inacceptable" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="critere_nettete" class="col_4">Crit&egrave;re de nettet&eacute; :</label>
+            <input type="text" id="critere_nettete" name="critere_nettete" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="equipement_sensible" class="col_4">Equipement sensible :</label>
+            <input type="text" id="equipement_sensible" name="equipement_sensible" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="zone_critique" class="col_4">Zone critique :</label>
+            <input type="text" id="zone_critique" name="zone_critique" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="destinataire_depeche" class="col_4">Destinataire d&eacute;p&ecirc;che :</label>
+            <input type="text" id="destinataire_depeche" name="destinataire_depeche" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="destinataire_message" class="col_4">Destinataire du message :</label>
+            <input type="text" id="destinataire_message" name="destinataire_message" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="num_equipe_dediee" class="col_4">N&deg; d'&eacute;quipe d&eacute;di&eacute;e :</label>
+            <input type="text" id="num_equipe_dediee" name="num_equipe_dediee" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="niveau_urgence" class="col_4">Niveau d'urgence :</label>
+            <input type="text" id="niveau_urgence" name="niveau_urgence" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="etat_equipement" class="col_4">Etat de l'&eacute;quipement :</label>
+            <input type="text" id="etat_equipement" name="etat_equipement" value="{{values.ticket_component_criticality}}" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="delai_resolution" class="col_4">D&eacute;lai de r&eacute;solution :</label>
+            <input type="text" id="delai_resolution" name="delai_resolution" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_12 form_del_margin" style="margin-left: 0;">
+            <label for="commentaire" class="col_2" style="padding-left: 5px;">Commentaire :</label>
+            <input type="text" id="commentaire" name="commentaire" value="{{values.ticket_comment}}" class="col_9" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="journal_supervision" class="col_4">Journal supervision :</label>
+            <input type="text" id="journal_supervision" name="journal_supervision" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin">
+            <label for="url_document_associe" class="col_4">URL document associ&eacute; :</label>
+            <input type="text" id="url_document_associe" name="url_document_associe" value="" class="col_7" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="copie_pour_info" class="col_4">Copie pour info :</label>
+            <input type="text" id="copie_pour_info" name="copie_pour_info" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin"></div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_12 form_del_margin" style="margin-left: 0;">
+            <label for="commentaire_lieu" class="col_2" style="padding-left: 5px;">Commentaire du lieu :</label>
+            <input type="text" id="commentaire_lieu" name="commentaire_lieu" value="" class="col_9" />
+        </div>
+    </div>
+    <div class="col_12 form_del_margin">
+        <div class="col_6 form_del_margin">
+            <label for="code_reparation" class="col_4">Code r&eacute;paration :</label>
+            <input type="text" id="code_reparation" name="code_reparation" value="" class="col_7" />
+        </div>
+        <div class="col_6 form_del_margin"></div>
+    </div>
+    <div class="col_12"><input type="hidden" id="version" name="version" value="NAGIO" /></div>
+    <div class="col_12"><input type="hidden" id="event_id" name="event_id" value="{{values.event_id}}" /></div>
+    <div class="col_12"></div>
+    <div class="col_12">
+        <div class="col_5"></div>
+        <div class="col_3">
+            <input type="submit" id="submit" name="submit" value="D&eacute;clarer l'incident" onclick="declare_ticket();"/>
+        </div>
+        <div class="col_4"></div>
+    </div>
+    <div class="col_12"></div>
+    </form>
+</div>
+<div class="col_12"></div>
+<div class="col_12"></div>
+<div class="col_12"></div>
+<div class="col_12"></div>
+{{/if}}
+</div>
+</div>
+<div id="addsystemdlg" title="Ajouter un syst&egrave;me">
+<form name="addasystem" action="">
+<p><input type=text name="fname"></p>
+<input type="submit" value="Submit">
+<input type="submit" value="Cancel" onclick="$( '#addsystemdlg' ).dialog( 'close' );document.forms['addasystem'].reset();return false;">
+</form>
+</div>
+</body>

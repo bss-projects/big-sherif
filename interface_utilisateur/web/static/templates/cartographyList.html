@@ -1,0 +1,19 @@
+<a href="/create_map.html" target="_blank">Nouvelle carte</a>
+
+<table id="cartographyListTable">
+    <tr>
+        <th>Nom</th>
+        <th>Lien</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+    </tr>
+    {{#each list}}
+    <tr id="map_{{.}}">
+        <td>{{.}}</td>
+        <td><a href="#cartography/{{.}}" target="_blank">Visualiser</td>
+        <td><a href="#cartographyEdit/{{.}}" target="_blank">Editer</td>
+        <td><a href="javascript:$('#map_{{.}}').remove(); delMap('{{.}}'); void(0);">Supprimer</td>
+    </tr>
+    {{/each}}
+
+</table>

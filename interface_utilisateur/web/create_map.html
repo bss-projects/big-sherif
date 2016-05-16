@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<!-- Page info -->
+    <title>Big Sherif</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- CSS -->
+    <link href="css/reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/kickstart/kickstart.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css" media="all" />
+    <link rel="stylesheet" href="css/datagrid.css" />
+    <link rel="stylesheet" href="css/jquery.contextmenu.css" />
+    <link rel="stylesheet" href="css/zoommap.css" />
+    <link href="css/big_sherif.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/hostdetails.css" />
+    <link rel="stylesheet" href="css/create_map.css" />
+	
+	<!-- Libraries Includes -->
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    <script src="js/libs/jquery-ui-1.10.3.min.js"></script>
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <script src="js/libs/secondtostring.js"></script>
+    <script src="js/libs/underscore-1.4.4.min.js"></script>
+    <script src="js/libs/backbone-1.0.0.min.js"></script>
+    <script src="js/libs/json2.js"></script>
+    <script src="js/libs/datepicker.js"></script>
+    <script src="js/libs/handlebars-1.0.0.js"></script>
+    <script src="js/libs/jQuery.encoding.digests.sha1.js"></script>
+    <script src="js/libs/jquery.md5.js"></script>
+    <script src="js/libs/jquery.cookie.js"></script>
+    <script src="js/libs/jquery.contextmenu.js"></script>
+    <script type="text/javascript" src="js/libs/kickstart.js"></script> 
+    
+    <!-- Includs Cartography -->
+    <script type="text/javascript" src="js/libs/jquery.jsPlumb-1.5.0-min.js"></script>
+    <script type="text/javascript" src="js/libs/zoommap.js"></script>
+	
+	<!-- Personal JS Includes -->
+	<script src="js/auth.js"></script>
+	<script src="js/handlebars-render.js"></script>
+	<script src="js/jquery-serializeObject.js"></script>
+	<script src="js/backbone-models.js"></script>
+	<script src="js/backbone-views.js"></script>
+	<script src="js/big_sherif.js"></script>
+	<script src="js/big_event.js"></script>
+	<script src="js/create_map.js"></script>
+
+        <script>
+                $(document).ready(function(){createmapinit();});
+        </script>
+
+
+</head>
+<body>
+<!-- <div id="navbar" class="navbar">
+<div id="addanimage" href="">Ajouter une image</div>
+<div id="addahost" href="">Ajouter un h&ocirc;te</div>
+<div id="addapool" href="">Ajouter un pool</div>
+<div id="addamap" href="">Ajouter une carte</div>
+<div id="addalink" href="">Ajouter un lien</div>
+<div id="addatext" href="">Ajouter un texte</div>
+</div>-->
+<form name=map>
+<input type=hidden name=mapname>
+</form>
+<div id="navbar" class="navbar">
+<div class="dragmenu" id=newpicture><i title="New picture" class="icon-2x icon-picture"></i></div>
+<div class="dragmenu" id=newhost><i title="New host" class="icon-2x icon-hdd"></i></div>
+<div class="dragmenu" id=newpool><i title="New pool" class="icon-2x icon-th"></i></div>
+<div class="dragmenu" id=newmap><i title="New map" class="icon-2x icon-sitemap"></i></div>
+<div class="dragmenu" id=newtext>T</div>
+<div id=save><i title=Save class="icon-2x icon-save"></i></div>
+</div>
+
+<div id="map">
+</div>
+</body>
+</html>
+

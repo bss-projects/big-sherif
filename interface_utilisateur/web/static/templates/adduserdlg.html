@@ -1,0 +1,17 @@
+<form name="addauser" action="javascript:void(0);">
+<div id="usernotice"></div>
+<div style="float: left; width: 8em; text-align: center"><label for="username">Username :</label></div><div><input type="text" name="username" /></div>
+<div style="float: left; width: 8em; text-align: center"><label for="nom">Nom :</label></div><div><input type="text" name="nom" /></div>
+<div style="float: left; width: 8em; text-align: center"><label for="prenom">P&eacute;nom :</label></div><div><input type="text" name="prenom" /></div>
+<div style="float: left; width: 8em; text-align: center"><label for="email">E-Mail :</label></div><div><input type="text" name="email" /></div>
+<div style="float: left; width: 8em; text-align: center"><label for="password">Mot de passe:</label></div><div><input type="password" name="password" /></div>
+<input type="hidden"  name="oldpassword" value="0" /><input type="hidden"  name="id" value="" />
+
+<ul class="button-bar" style="padding-top: 15px;padding-bottom: 15px">
+<li><a href="javascript:void(0);" id="viewgroupbtn"><i class="icon-group" ></i>Groupes</a></li>
+</ul>
+<div id="addusergrouplist">
+</div>
+<input type="submit" value="Ajouter" onclick="addUser();">
+<input type="submit" value="Cancel" onclick="document.forms['addauser'].reset();$( '#adduserdlg' ).dialog( 'close' );$('#usernotice').removeClass('notice error');$('#usernotice').html('');">
+</form>

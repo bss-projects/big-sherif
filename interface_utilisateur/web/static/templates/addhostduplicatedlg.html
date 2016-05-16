@@ -1,0 +1,11 @@
+<form name="addaduplicatehost" action="javascript:void(0);">
+<div id="duplicatehostnotice"></div>
+<div style="float: left; width: 13em; text-align: center"><label for="nom">Nom :</label></div><div><input type="text" name="nom" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector">Type du connecteur :</label></div><div><input type="text" name="connector" disabled="true" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="connector_name">Connecteur :</label></div><div><input type="text" name="connector_name" disabled="true" /></div>
+<div style="float: left; width: 13em; text-align: center"><label for="ip">Adresse IP :</label></div><div><input type="text" name="ip" disabled="true" /></div>
+<input name="dupid" disabled="true" type="hidden" />
+<input name="oldname" disabled="true" type="hidden" />
+<input type="submit" value="Ajouter" id="addaduplicatehostsubmit" onclick="addDuplicateHost();">
+<input type="submit" value="Cancel" onclick="document.forms['addaduplicatehost'].reset();$( '#addhostduplicatedlg' ).dialog( 'close' );$('#duplicatehostnotice').removeClass('notice error');$('#duplicatehostnotice').html('');">
+</form>

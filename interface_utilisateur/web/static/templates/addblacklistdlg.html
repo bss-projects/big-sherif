@@ -1,0 +1,177 @@
+<form name="addablacklist" action="javascript:void(0);">
+<div id="blacklistnotice"></div>
+<div style="float: left; width: 10em; text-align: center"><label for="label">Nom :</label></div><div><input type="text" name="label" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="order">Priorit&eacute; :</label></div><div><input type="text" name="order" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="hostname">Filtre &eacute;quipement :</label></div><div><input type="text" name="hostname" id="blhostname"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="resource">Filtre ressource :</label></div><div><input type="text" name="resource" id="blresource"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="connector_name">Filtre connecteur :</label></div><div><input type="text" name="connector_name" id="blconnector_name"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="criticality">Filtre criticité :</label></div><div><input type="text" name="criticality" id="blcriticality"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="desc">Description :</label></div><div><input type="text" name="desc" /></div><input type="hidden"  name="_id" value="" /><input type="hidden"  name="balance" value="" />
+
+<p>
+<input type="radio" name="stop" value="0">
+<label for="stop" class="inline"><i class="icon-off icon-large" style="color: green" title="on"></i></label>
+<input type="radio" name="stop" value="1">
+<label for="stop" class="inline"><i class="icon-off icon-large" style="color: red" title="off"></i></label>
+<p>
+
+<input type="submit" value="Ajouter" onclick="addBlacklist();">
+<input type="submit" value="Cancel" onclick="document.forms['addablacklist'].reset();$( '#addblacklistdlg' ).dialog( 'close' );$('#blacklistnotice').removeClass('notice error');$('#blacklistnotice').html('');">
+</form>
+
+ <script>
+$(function() {
+function split( val ) {
+return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+return split( term ).pop();
+}
+$( "#blhostname" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/hosts/" + extractLast( request.term ) + "/list", {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value);
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+$( "#blresource" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/resources/" + $("#blhostname")[0].value + "/list/"+ extractLast( request.term ), {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value );
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+$( "#blconnector_name" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/connectors/" + extractLast( request.term ) + "/list", {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+$( "#blcriticality" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/criticality/" + extractLast( request.term ) + "/list", {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+
+});
+</script>

@@ -1,0 +1,302 @@
+body{
+    font-family: Cantarell,'Droid Sans',Ubuntu,'DejaVu Sans',Arial,sans-serif;
+    font-size: 14px;
+}
+
+.title{
+    background: url("images/bg_top.png") repeat-x scroll 0 0 transparent;
+text-align: center;
+}
+
+#sliding { 
+    position: relative;
+    bottom: 0;
+}
+
+.overview {
+    position:relative;
+    left: 0;
+    bottom:0; 
+    width:100%;
+    height:200px;
+    background:LightSkyBlue;
+}
+
+.fullpage {
+    position:relative;
+    width:100%;
+    height:400px;
+    background:LightSteelBlue;
+}
+
+.tab_page {
+    position: relative;
+}
+
+#tabPanel
+{
+    top: 75px;
+    position: fixed;
+    left: 210px;
+    right: 5px;
+    border-radius: 4px;
+}
+
+#tabPanel li .ui-icon-close
+{
+    float: left;
+    margin: 0.4em 0.2em 0 0;
+    cursor: pointer;
+}
+
+.ui-menu
+{
+    position: inherit;
+    z-index: 500;
+    font-size: smaller;
+}
+
+th.sorting {
+    background: url("../images/status/sort_both.png") no-repeat scroll right center transparent;
+    cursor: pointer;
+}
+th.sorting_asc {
+    background: url("../images/status/sort_asc.png") no-repeat scroll right center transparent;
+    cursor: pointer;
+}
+
+th.sorting_desc {
+    background: url("../images/status/sort_desc.png") no-repeat scroll right center transparent;
+    cursor: pointer;
+}
+
+table.datagrid {
+    border-collapse: collapse;
+    clear: both;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    table-layout: fixed;
+}
+table.datagrid thead {
+    text-align:left;
+    float: left;
+    width: 100%;
+    padding-right: 17px;
+    overflow-x: hidden;
+    background-color: #999999;
+}
+
+table.datagrid thead tr {
+    width: 100%;
+}
+table.datagrid tbody {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    float: left;
+    width: 100%;
+}
+
+table.datagrid tbody tr {
+    height: 32px;
+}
+table.datagrid tbody td {
+    border: 1px solid #D7D7D9;
+    border-bottom: 1px solid #999999;
+    border-top: 1px solid #999999;
+    color: #999999;
+    font-size: 12px;
+    padding: 3px 3px;
+}
+
+
+table.datagrid tfoot th {
+    border-right: 1px solid;
+    border-top: 1px solid black;
+    font-weight: normal;
+    padding: 3px 18px 3px 10px;
+}
+
+/* table.datagrid tr:after{
+    content: ".";
+    visibility: hidden;
+} */
+
+tr.odd {
+    background-color: #EDF3FF;
+   background-color: #EFFBF2;
+}
+tr.odd:hover {
+   background-color: #EFF0F2;
+}
+tr.even {
+    background-color: white;
+}
+tr.even:hover {
+    background-color: #EFFBF2;
+   background-color: #EFF0F2;
+}
+
+table.datagrid thead th {
+    border-bottom: 1px solid black;
+     color: #FFFFFF;
+    /* cursor: pointer; */
+    font-weight: normal;
+    padding: 3px 18px 3px 10px;
+    text-transform: capitalize;
+    background-color: #999999;
+/*     -moz-border-radius: 10px 10px 0 0; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+}
+
+table.datagrid td.column_fiche, table.datagrid th.column_fiche {
+    text-align: center;
+}
+
+.ui-dialog .ui-dialog-title {
+margin-left: 10px;
+}
+.ui-dialog-titlebar-close {
+visibility: hidden;
+}
+fieldset {
+margin: 0px;
+}
+.ui-dialog {
+text-align: center;
+}
+
+#lemenu {
+width: 200px;
+float: left;
+background: white;
+border-radius: 4px;
+margin: 5px;
+margin-top: 6.7em;
+margin-bottom: auto;
+}
+
+#lemenu ul {
+margin-right: 10px;
+}
+
+#lemenu li a img {
+margin-right: 3px;
+margin-bottom: 3px;
+}
+
+.sep {
+padding-bottom: 10px;
+border-bottom: 1px green dotted;
+}
+
+#lemenu a:link {
+text-decoration:none;
+color: #555555;
+}
+#lemenu a:visited {
+text-decoration:none;
+color: #555555;
+}
+#lemenu a:hover {
+text-decoration:underline;
+color: #555555;
+}
+#lemenu a:active {
+text-decoration:underline;
+color: #555555;
+}
+
+ul, ol{
+margin: 0 0 5px 10px;
+}
+
+#loginlogo {
+background: url(/images/bigsherif_logo.png) no-repeat center ;
+border-radius: 4px;
+height: 389px;
+width: 300px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom: 30px;
+}
+
+#logo {
+background: url(/images/bigsherif_ban.png) no-repeat center white;
+position:absolute;
+border-radius: 4px;
+top: 5px;
+left: 5px;
+right: 5px;
+height: 65px;
+}
+
+#loginForm {
+text-align: center;
+}
+
+#loginForm th, td {
+text-align: center;
+}
+
+#loginForm fieldset {
+width: 300px;
+margin-left: auto;
+margin-right: auto;
+}
+
+#ohmevent {
+position: inherit;
+background: #F3F3F3;
+border-radius: 4px;
+display: block;
+}
+
+#ohmevent th,td {
+text-align: center;
+}
+
+table.datagrid tbody{
+height: 425px;;
+}
+
+#botcont{
+border-radius: 4px;
+height: 500px;
+}
+
+#botcont a {
+color: #222222;
+}
+
+#systems {
+word-wrap:break-word;
+}
+
+#comment textarea {
+width: 100%;
+}
+
+#unmanage textarea {
+height : auto;
+width: 100%;
+}
+
+#scrolling_area_transcodeListTable {
+height : 250px;
+}
+
+
+#loading-message { position: absolute; width: 400px; height: 100px; line-height: 100px; background-color: #fff; text-align: center; font-size: 1.2em; left: 50%; top: 50%; margin-left: -200px; margin-top: -50px; border-style: solid; border-width: 5px; border-color: black;}
+
+#cartographyList {
+	height: 500px;
+	overflow: auto;
+}
+
+#cartographyList table tbody tr th {
+text-align:center;
+}

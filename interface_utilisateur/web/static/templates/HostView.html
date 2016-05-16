@@ -1,0 +1,85 @@
+<div id="logo"></div>
+
+<div class="header">
+<div class="top">
+<div class="controllers">
+<span class="close">
+</span>
+<span class="hide">
+</span>
+<span class="maximize">
+</span>
+</div>
+<!--<div class="title">
+{{values._id}} Details</div>
+</div>-->
+<div class="header-specific">
+</div>
+</div>
+<div class="content">
+<div class="webos-container headerHost" id="webos-widget-140">
+<div class="webos-labelfl" style="height: 10em; padding: 20px;"><i class="icon-info-sign icon-4x"></i></div>
+<div class="webos-labelfl">
+Host :</div><div class="webos-label"> {{values._id}}</div>
+<div class="webos-labelfl">
+Systems :</div><div class="webos-label" id="systems"> {{fonctionnelHelper values.pool}} </div>
+<div class="webos-labelfl">
+IP :</div><div class="webos-label"> {{values.address}}</div>
+<div class="webos-labelfl">
+Services :</div><div class="webos-label"> {{serviceHelper values.pool}}<div>
+<div class="webos-labelfl">
+Connecteurs :</div><div class="webos-label"> {{values.connector_name}}</div>
+<div class="webos-labelfl">
+Perimeter :</div><div class="webos-label"> {{perimetreHelper values.pool}}</div>
+<div class="webos-labelfl">
+Domaine :</div><div class="webos-label"> {{domaineHelper values.pool}}</div>
+
+
+<div class="webos-container headerHostActions" id="webos-widget-143" style="">
+<ul class="button-bar">
+<li><a href="javascript:void(0);" onclick="showHost('ohmhost');"><i class="icon-home" ></i>Ohm</a></li>
+<li><a href="javascript:void(0);" onclick="showHost('unmanage');"><i class="icon-eye-close" ></i>Unmanage</a></li>
+<li><a href="javascript:void(0);" onclick="showHost('history');"><i class="icon-calendar"></i>Historique</a></li>
+<!-- <li><a href="javascript:void(0);" onclick="showHost('metrology');"><i class="icon-bar-chart"></i>Metrologie</a></li> -->
+<!-- <li><a href="javascript:void(0);"><i class="icon-file-alt"></i>QRS</a></li> -->
+</ul>
+</div>
+</div>
+<div id="botcont" style="position : relative;">
+<div id="ohmhost">
+
+</div>
+<div id="unmanage" style="visibility:hidden; position: absolute; left: 0px; top: 0px;">
+<code class="codetitle">Are you sure to unmanage monitoring for {{values._id}}?</code>
+<p id="date"></p>
+<form name="unmanage_host" action="javacript:void(0);">
+<input type=hidden value="{{values._id}}" name=component />
+<div class="webos-labelfl" style="text-align:center"><label for="comment">Commentaire :</label></div>
+<div class="webos-label"><textarea name="comment" id="comment" value="" /></div>
+<div class="webos-label" style="text-align:center"><label for="start_time">Heure de début :</label>
+<input name=start_time id="start_time" value="{{values.now}}" type="text" />
+<label for="end_time">Heure de fin :</label>
+<input id="end_time" name=end_time value="" type="text" /></div>
+
+<div style="text-align: center">
+<input type="button" value="Send" name="submit" class="submit_button" onclick="addUnmanage()"/>
+<input type="button" value="Close" name="close" class="close_button" onclick="document.forms['unmanage_host'].reset();"/>
+</form>
+</div>
+
+<div id=unmanage_listing>
+</div>
+</div>
+<div id="history" style="visibility:hidden; position: absolute; left: 0px; top: 0px;">
+</div>
+<div id="metrology" style="visibility:hidden; position: absolute; left: 0px; top: 0px;">
+</div>
+
+</div>
+<div id="addsystemdlg" title="Ajouter un syst&egrave;me">
+<form name="addasystem" action="" onsubmit="return addFonctionnel();">
+<input type=text name="fname">
+<input type="submit" value="Submit">
+<input type="submit" value="Cancel" onclick="$( '#addsystemdlg' ).dialog( 'close' );document.forms['addasystem'].reset();return false;">
+</form>
+</div>

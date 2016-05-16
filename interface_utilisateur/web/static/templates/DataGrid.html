@@ -1,0 +1,24 @@
+<form id="form_recherche_{{tableId}}">
+    <fieldset>
+        Recherche : <input type="text" id="recherche_{{tableId}}">
+		 		Filtre : <select name="load_filter" id="load_filter_{{tableId}}"><option value=""></option>
+				</select>
+				<input type="button" value="Sauvegarder" id="save_filter_{{tableId}}"/>
+				<input type="button" value="Supprimer" id="delete_filter_{{tableId}}"/>
+    </fieldset>
+</form>
+<div id=menuBar_{{tableId}}>
+</div>
+<div class='tableContainer'>
+    <table class="datagrid" id='{{tableId}}' >
+        <thead class="fixedHeader">
+            <tr>
+                {{#each columns}}
+                <th class="{{this.css_class}}" style="{{this.style}};" id="sort_header_{{this.field}}">{{this.label}}<br /><input type="text" id="filter_{{this.field}}" size="10" /></th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody  id='scrolling_area_{{tableId}}'class="scrollContent">
+        </tbody>
+    </table>
+</div>

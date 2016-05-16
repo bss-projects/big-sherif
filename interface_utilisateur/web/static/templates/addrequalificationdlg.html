@@ -1,0 +1,135 @@
+<form name="addarequalification" action="javascript:void(0);">
+<div id="requalificationnotice"></div>
+<div style="float: left; width: 10em; text-align: center"><label for="component">Equipement :</label></div><div><input type="text" name="component" id="addarequalificationhostname"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="resource">Ressource :</label></div><div><input type="text" name="resource" id="addarequalificationresource"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="connector">Connecteur :</label></div><div><input type="text" name="connector" id="addarequalificationconnector"/></div>
+<div style="float: left; width: 10em; text-align: center"><label for="criticality_transcode">Criticit&eacute; d'entr&eacute;e:</label></div><div><input type="text" name="criticality_transcode" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="criticality_requalify">Criticit&eacute; requalifi&eacute;e:</label></div><div><input type="text" name="criticality_requalify" /></div>
+</div><input type="hidden"  name="_id" value="" />
+<p>
+
+<input type="submit" value="Ajouter" onclick="addRequalification();">
+<input type="submit" value="Cancel" onclick="document.forms['addarequalification'].reset();$( '#addrequalificationdlg' ).dialog( 'close' );$('#requalificationnotice').removeClass('notice error');$('#requalificationnotice').html('');">
+</form>
+
+ <script>
+$(function() {
+function split( val ) {
+return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+return split( term ).pop();
+}
+$( "#addarequalificationhostname" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/hosts/" + extractLast( request.term ) + "/list", {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value);
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+$( "#addarequalificationresource" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/resources/" + $("#addarequalificationhostname")[0].value + "/list/"+ extractLast( request.term ), {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+$( "#addarequalificationconnector" )
+// don't navigate away from the field on tab when selecting an item
+.bind( "keydown", function( event ) {
+if ( event.keyCode === $.ui.keyCode.TAB &&
+$( this ).data( "ui-autocomplete" ).menu.active ) {
+event.preventDefault();
+}
+})
+.autocomplete({
+source: function( request, response ) {
+$.getJSON( "/api/connectors/" + extractLast( request.term ) + "/list", {
+term: extractLast( request.term )
+}, response );
+},
+search: function() {
+// custom minLength
+var term = extractLast( this.value );
+if ( term.length < 2 ) {
+return false;
+}
+},
+focus: function() {
+// prevent value inserted on focus
+return false;
+},
+select: function( event, ui ) {
+var terms = split( this.value );
+// remove the current input
+terms.pop();
+// add the selected item
+terms.push( ui.item.value );
+// add placeholder to get the comma-and-space at the end
+terms.push( "" );
+this.value = terms.join( "" );
+return false;
+}
+});
+});
+</script>

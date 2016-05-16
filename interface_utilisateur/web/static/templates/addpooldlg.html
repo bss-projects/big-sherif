@@ -1,0 +1,13 @@
+<form name="addapool" action="javascript:void(0);">
+<div id="poolnotice"></div>
+<div style="float: left; width: 10em; text-align: center"><label for="nom">Nom :</label></div><div><input type="text" name="pool_name" /></div>
+<div style="float: left; width: 10em; text-align: center"><label for="desc">Description :</label></div><div><input type="text" name="desc" /></div><input type="hidden"  name="_id" value="" />
+<div style="float: left; width: 10em; text-align: center"><label for="type">Type :</label></div><div><select name="pool_type_name"><option value="Fonctionnel">Fonctionnel</option><option value="Domaine">Domaine</option><option value="Périmètre">Périmètre</option><option value="Service">Service</option></select></div>
+<p>
+<div id="addpoolmember"></div>
+<div id="pool_members"></div>
+
+
+<input type="submit" value="Ajouter" onclick="addPool();">
+<input type="submit" value="Cancel" onclick="document.forms['addapool'].reset();document.forms['addapool']['_id'].value='';$( '#addpooldlg' ).dialog( 'close' );$('#poolnotice').removeClass('notice error');$('#poolnotice').html('');$('#addpoolmember').html('');$('#pool_members').html('');">
+</form>
